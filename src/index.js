@@ -1,27 +1,57 @@
-import React from 'react';
+import React,{Component,Fragment} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-// 函数定义组件
-function Todo(props){
-    return (
-        <div>
-            {/* 条件渲染 */}
-            {props.list.length>=6?<h1>todo</h1>:''}
-            {props.list.length>=5 && <h1>todo</h1>}
-            <ul>
-                {/* 循环渲染 */}
-                {
-                    props.list.map(
-                        (item,index)=> index%2 === 0&&<li key={item}>{item}</li>
-                    )
-                }
-            </ul>
-        </div>
-    )
+// 类定义组件
+class Hello extends Component{
+    constructor(){
+        super();
+        this.state = {
+            time: new Date().toLocaleString()
+        }
+    }
+    render(){
+        setInterval(()=>{
+            this.setState({
+                time: new Date().toLocaleString()
+            })
+        },1000)
+
+        return (
+            <Fragment>
+                <div>{this.state.time}</div>
+                <div>hello{this.props.word}</div>
+            </Fragment>
+        );
+    }
 }
-var item = [1,2,3,4,5];
-ReactDOM.render(<Todo list={item}/>,document.getElementById('root'));
+ReactDOM.render(<Hello word="react"/>,document.getElementById('root'));
+
+// 函数定义组件（无生命周期函数）
+// 当只是渲染结构时
+// function Todo(props){
+//     return (
+//         <div>
+//             {/* 条件渲染 */}
+//             {props.list.length>=6?<h1>todo</h1>:''}
+//             {props.list.length>=5 && <h1>todo</h1>}
+//             <ul>
+//                 {/* 循环渲染 */}
+//                 {
+//                     props.list.map(
+//                         (item,index)=> index%2 === 0&&<li key={item}>{item}</li>
+//                     )
+//                 }
+//             </ul>
+//         </div>
+//     )
+// }
+// var item = [1,2,3,4,5];
+// ReactDOM.render(<Todo list={item}/>,document.getElementById('root'));
+
+
+
+
 
 // react元素创建后不可改变
 // function tick(){
