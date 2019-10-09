@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './index.css';
 // jsx表达式会被react转成一个对象
 var ele = React.createElement(
     'div',
@@ -27,8 +28,19 @@ var obj = {
     }
 }
 
+// 加载html文件、浏览器解析html生成DOM树
+// link加载css文件、解析css规则、和DOM树结合生成render tree、浏览器渲染引擎渲染render tree
+
 // 页面回流（重排）：内容改变、大小改变、结构改变
 // 页面重绘：把字体颜色、背景颜色等样式改变
+
+// node.offsetLeft、node.offsetWidth等慎用
+// var root = document.getElementById('root');
+// var width = root.offsetWidth;
+// setInterval(function(){
+//     width += 1
+//     root.style.width = width + 'px';
+// },100)
 
 // display、width、height、font-size等会引起页面回流
 // document.body.style.width = '100px';
@@ -40,13 +52,13 @@ var obj = {
 // }
 // document.body.className = 'change';
 
-console.time('a');
-var str = '';
-for(var i=0;i<1000;i++){
-    str += '<li>'+i+'</li>';
-}
-document.body.innerHTML = str;
-console.timeEnd('a');
+// console.time('a');
+// var str = '';
+// for(var i=0;i<1000;i++){
+//     str += '<li>'+i+'</li>';
+// }
+// document.body.innerHTML = str;
+// console.timeEnd('a');
 function render(obj,container){
     var {type,props} = obj;
     // 文档碎片
