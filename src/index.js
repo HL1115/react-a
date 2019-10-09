@@ -1,7 +1,39 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-// jsx表达式会被react转成一个对象
+
+// 函数定义组件
+function Todo(props){
+    return (
+        <div>
+            <h1>todo</h1>
+            <ul>
+                {/* 循环渲染 */}
+                {
+                    props.list.map(function(item,index){
+                        return <li key={item}>{item}</li>
+                    })
+                }
+            </ul>
+        </div>
+    )
+}
+var item = [1,2,3,4,5];
+ReactDOM.render(<Todo list={item}/>,document.getElementById('root'));
+
+// react元素创建后不可改变
+// function tick(){
+//     var e = <div>
+//                 <p>当前时间</p>
+//                 <p>当前时间</p>
+//                 <h1>{new Date().toLocaleString()}</h1>;
+//             </div>
+//     ReactDOM.render(e,document.getElementById('root'));
+// }
+// tick();
+// setInterval(tick,1000);
+
+// jsx表达式会被react转成一个对象，类似下面声明的obj对象
 var ele = React.createElement(
     'div',
     {'id':'box'},
@@ -28,37 +60,7 @@ var obj = {
     }
 }
 
-// 加载html文件、浏览器解析html生成DOM树
-// link加载css文件、解析css规则、和DOM树结合生成render tree、浏览器渲染引擎渲染render tree
-
-// 页面回流（重排）：内容改变、大小改变、结构改变
-// 页面重绘：把字体颜色、背景颜色等样式改变
-
-// node.offsetLeft、node.offsetWidth等慎用
-// var root = document.getElementById('root');
-// var width = root.offsetWidth;
-// setInterval(function(){
-//     width += 1
-//     root.style.width = width + 'px';
-// },100)
-
-// display、width、height、font-size等会引起页面回流
-// document.body.style.width = '100px';
-// document.body.style.height = '100px';
-// 声明一个css的一个类
-// .change{
-//     width: 100px;
-//     height: 100px;
-// }
-// document.body.className = 'change';
-
-// console.time('a');
-// var str = '';
-// for(var i=0;i<1000;i++){
-//     str += '<li>'+i+'</li>';
-// }
-// document.body.innerHTML = str;
-// console.timeEnd('a');
+// 自己声明render函数，实现页面渲染
 function render(obj,container){
     var {type,props} = obj;
     // 文档碎片
@@ -86,6 +88,40 @@ function render(obj,container){
 }
 // render(obj,document.getElementById('root'));
 
-// var e = <h1>hello</h1>;
-// ReactDOM.render(ele,document.getElementById('root'));
+// 注意以下性能问题及优化方法
+
+// 加载html文件、浏览器解析html生成DOM树
+// link加载css文件、解析css规则、和DOM树结合生成render tree、浏览器渲染引擎渲染render tree
+
+// 页面回流（重排）：内容改变、大小改变、结构改变
+// 页面重绘：把字体颜色、背景颜色等样式改变
+
+// 1、node.offsetLeft、node.offsetWidth等慎用
+// var root = document.getElementById('root');
+// var width = root.offsetWidth;
+// setInterval(function(){
+//     width += 1
+//     root.style.width = width + 'px';
+// },100)
+
+// display、width、height、font-size等会引起页面回流
+// document.body.style.width = '100px';
+// document.body.style.height = '100px';
+// 2、声明一个css的一个类
+// .change{
+//     width: 100px;
+//     height: 100px;
+// }
+// document.body.className = 'change';
+
+// 3、对节点的操作先用变量代替
+// console.time('a');
+// var str = '';
+// for(var i=0;i<1000;i++){
+//     str += '<li>'+i+'</li>';
+// }
+// document.body.innerHTML = str;
+// console.timeEnd('a');
+// 4、文档碎片的概念
+
 
