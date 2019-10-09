@@ -4,18 +4,35 @@ import './index.css';
 
 // 类定义组件
 class Hello extends Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             time: new Date().toLocaleString()
         }
+        
+        console.log('constructor',this.props.word);
     }
-    render(){
-        setInterval(()=>{
+    componentDidMount(){
+        console.log('componentDidMount');
+        setTimeout(()=>{
+            console.log(1)
             this.setState({
                 time: new Date().toLocaleString()
             })
         },1000)
+    }
+    shouldComponentUpdate(){
+        return true;
+    }
+    getSnapshotBeforeUpdate(){
+        console.log('getsnapshot');
+    }
+    componentDidUpdate(){
+        console.log('didupdate');
+        
+    }
+    render(){
+        console.log('render');
 
         return (
             <Fragment>
