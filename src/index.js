@@ -6,13 +6,15 @@ import './index.css';
 function Todo(props){
     return (
         <div>
-            <h1>todo</h1>
+            {/* 条件渲染 */}
+            {props.list.length>=6?<h1>todo</h1>:''}
+            {props.list.length>=5 && <h1>todo</h1>}
             <ul>
                 {/* 循环渲染 */}
                 {
-                    props.list.map(function(item,index){
-                        return <li key={item}>{item}</li>
-                    })
+                    props.list.map(
+                        (item,index)=> index%2 === 0&&<li key={item}>{item}</li>
+                    )
                 }
             </ul>
         </div>
