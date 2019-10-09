@@ -33,7 +33,6 @@ class Hello extends Component{
     }
     render(){
         console.log('render');
-
         return (
             <Fragment>
                 <div>{this.state.time}</div>
