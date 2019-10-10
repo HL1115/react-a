@@ -18,6 +18,10 @@ export default class Todolist extends Component {
         console.log(msg);
     }
     delItem = (a)=>{
+        this.state.todo.splice(a,1);
+        this.setState({
+            todo: this.state.todo
+        })
         console.log(a);
     }
     render() {
