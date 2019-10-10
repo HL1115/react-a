@@ -10,6 +10,11 @@ export default class Todolist extends Component {
         }
     }
     addItem = (msg)=>{
+        // this.state.todo.push(msg)
+        // console.log(this.state.todo)
+        this.setState({
+            todo: [...this.state.todo,msg]
+        })
         console.log(msg);
     }
     render() {
