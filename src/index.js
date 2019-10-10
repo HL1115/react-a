@@ -8,6 +8,9 @@ import Todolist from './Todolist/Todolist'
 // 在子组件中通过props获取数据
 ReactDOM.render(<Todolist/>,document.getElementById('root'));
 
+
+
+
 // 函数定义组件（无生命周期函数）
 // 当只是渲染结构时
 // function Todo(props){
