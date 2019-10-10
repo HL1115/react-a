@@ -17,11 +17,14 @@ export default class Todolist extends Component {
         })
         console.log(msg);
     }
+    delItem = (a)=>{
+        console.log(a);
+    }
     render() {
         return (
             <div>
                 <Todoinput addTodo={this.addItem}/>
-                <Todoing todo={this.state.todo}/>
+                <Todoing delTodo={this.delItem} todo={this.state.todo}/>
             </div>
         )
     }
