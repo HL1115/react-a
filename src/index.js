@@ -1,47 +1,12 @@
-import React,{Component,Fragment} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-
-// 类定义组件
-class Hello extends Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            time: new Date().toLocaleString()
-        }
-        
-        console.log('constructor',this.props.word);
-    }
-    componentDidMount(){
-        console.log('componentDidMount');
-        setTimeout(()=>{
-            console.log(1)
-            this.setState({
-                time: new Date().toLocaleString()
-            })
-        },1000)
-    }
-    shouldComponentUpdate(){
-        return true;
-    }
-    getSnapshotBeforeUpdate(){
-        console.log('getsnapshot');
-    }
-    componentDidUpdate(){
-        console.log('didupdate');
-        
-    }
-    render(){
-        console.log('render');
-        return (
-            <Fragment>
-                <div>{this.state.time}</div>
-                <div>hello{this.props.word}</div>
-            </Fragment>
-        );
-    }
-}
-ReactDOM.render(<Hello word="react"/>,document.getElementById('root'));
+import ShowTime from './ShowTime';
+import Todolist from './Todolist/Todolist'
+// 组件交互
+// 父组件--->子组件：调用时在子组件上添加属性
+// 在子组件中通过props获取数据
+ReactDOM.render(<Todolist/>,document.getElementById('root'));
 
 // 函数定义组件（无生命周期函数）
 // 当只是渲染结构时
