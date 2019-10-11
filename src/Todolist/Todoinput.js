@@ -29,7 +29,8 @@ export default class Todoinput extends Component {
     constructor(){
         super();
         this.state = {
-            val: 0
+            n1: 0,
+            n2: 0
         }
     }
     handleInput = (e)=>{
@@ -39,16 +40,16 @@ export default class Todoinput extends Component {
     }
     handleChange = (e)=>{
         this.setState({
-            val: e.target.value
+            [e.target.name]: parseInt(e.target.value)
         })
     }
     render() {
         return (
             <div>
-                <input onChange={(e)=>this.handleChange(e)} value={this.state.val} onKeyDown={(e)=>this.handleInput(e)} type="text"/>
+                <input name="n1" onChange={(e)=>this.handleChange(e)} value={this.state.n1} onKeyDown={(e)=>this.handleInput(e)} type="text"/>
                 +
-                <input onChange={(e)=>this.handleChange(e)} value={this.state.val} onKeyDown={(e)=>this.handleInput(e)} type="text"/>
-                <p>0</p>
+                <input name="n2" onChange={(e)=>this.handleChange(e)} value={this.state.n2} onKeyDown={(e)=>this.handleInput(e)} type="text"/>
+                <p>{this.state.n1+this.state.n2}</p>
                 <button>查询</button>
             </div>
         )
