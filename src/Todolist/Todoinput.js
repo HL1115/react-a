@@ -35,7 +35,7 @@ export default class Todoinput extends Component {
     }
     handleInput = (e)=>{
         if(e.keyCode === 13){
-            this.props.addTodo(this.state.val);
+            this.props.addTodo(e.target.value);
         }
     }
     handleChange = (e)=>{
@@ -46,9 +46,9 @@ export default class Todoinput extends Component {
     render() {
         return (
             <div>
-                <input name="n1" onChange={(e)=>this.handleChange(e)} value={this.state.n1} onKeyDown={(e)=>this.handleInput(e)} type="text"/>
+                <input name="n1" onChange={this.handleChange} value={this.state.n1} onKeyDown={(e)=>this.handleInput(e)} type="text"/>
                 +
-                <input name="n2" onChange={(e)=>this.handleChange(e)} value={this.state.n2} onKeyDown={(e)=>this.handleInput(e)} type="text"/>
+                <input name="n2" onChange={this.handleChange} value={this.state.n2} onKeyDown={(e)=>this.handleInput(e)} type="text"/>
                 <p>{this.state.n1+this.state.n2}</p>
                 <button>查询</button>
             </div>
