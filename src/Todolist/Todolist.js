@@ -41,12 +41,14 @@ export default class Todolist extends Component {
     delItem = (a)=>{
         // this.state.todo.splice(a,1); //不要写
         // 深拷贝\浅拷贝
-
+        // 状态（state）：
+        // 1、不要直接改变、处理状态
         var todo = [...this.state.todo];
         todo.splice(a,1);
-        this.setState({
-            todo: todo
-        })
+        // 2、setState是异步的
+        this.setState(
+            {todo:todo}
+        )
     }
     render() {
         return (
