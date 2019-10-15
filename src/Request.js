@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Axios from 'axios';
+
 export default class Request extends Component {
     constructor(){
         super();
@@ -8,13 +9,23 @@ export default class Request extends Component {
         }
     }
     componentDidMount(){
-        Axios.get('https://api.apiopen.top/musicRankingsDetails?type=1')
+        fetch('https://api.apiopen.top/musicRankingsDetails?type=1')
             .then((res)=>{
-                console.log(res);
-                this.setState({
-                    data: res.data.result
-                })
+                return res.json();
             })
+            .then((res)=>{
+                this.setState({
+                    data: res.result
+                })
+                console.log(res);
+            })
+        // Axios.get('https://api.apiopen.top/musicRankingsDetails?type=1')
+        //     .then((res)=>{
+        //         console.log(res);
+        //         this.setState({
+        //             data: res.data.result
+        //         })
+        //     })
     }
     render() {
         return (
