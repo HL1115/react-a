@@ -9,6 +9,7 @@ function hoc(Com,url,title){
             }
         }
         componentDidMount(){
+            
             fetch(url)
             .then((res)=>{
                 return res.json();
@@ -47,9 +48,9 @@ class Music1 extends Component{
         return <ul>
             {
                 this.props.data.map((item,idx)=>{
-                    return (<div>
-                            <p key={idx}>{item.title}</p>
-                            <p key={idx}>{item.author}</p>
+                    return (<div key={idx}>
+                            <p>{item.title}</p>
+                            <p>{item.author}</p>
                         </div>
                     )
                 })
