@@ -5,6 +5,7 @@ import './index.css';
 // import Todolist from './Todolist/Todolist'
 import Requset from './Request';
 import Parent from './Context/Parent';
+import Hoc from './Hoc/Hoc';
 // 组件交互
 // 父组件--->子组件：调用时在子组件上添加属性
 // 在子组件中通过props获取数据
@@ -14,7 +15,7 @@ let color = 'red';
 // redux
 ReactDOM.render(
     <con.Provider value={color}>
-        <Parent/>
+        <Hoc/>
     </con.Provider>,
     document.getElementById('root'));
 
