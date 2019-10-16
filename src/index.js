@@ -11,11 +11,12 @@ import Hoc from './Hoc/Hoc';
 // 在子组件中通过props获取数据
 // let {Provider,Comsumer} = React.createContext();
 import {con} from './Context/Context'
+import ParentPortal from './Portal/ParentPortal';
 let color = 'red';
 // redux
 ReactDOM.render(
     <con.Provider value={color}>
-        <Hoc/>
+        <ParentPortal/>
     </con.Provider>,
     document.getElementById('root'));
 
