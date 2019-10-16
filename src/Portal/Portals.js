@@ -5,9 +5,10 @@ export default class Portals extends Component {
         console.log('portals click');
     }
     render() {
+        console.log(this);
         return (
             ReactDOM.createPortal(
-                <div onClick={this.cli}>Portal</div>,
+                <div onClick={this.cli}>{this.props.children}</div>,
                 document.body
             )
         )

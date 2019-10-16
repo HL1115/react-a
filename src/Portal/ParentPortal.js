@@ -8,7 +8,13 @@ export default class ParentPortal extends Component {
     render() {
         return (
             <div onClick={this.cli}>
-                <Portals />
+                <Portals>
+                    <h1>音乐</h1>
+                    <h1>音乐</h1>
+                </Portals>
+                <Portals>
+                    <li>列表</li>
+                </Portals>
             </div>
         )
     }
