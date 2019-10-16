@@ -12,13 +12,17 @@ import Hoc from './Hoc/Hoc';
 // let {Provider,Comsumer} = React.createContext();
 import {con} from './Context/Context'
 import ParentPortal from './Portal/ParentPortal';
+import App from './App';
 let color = 'red';
-// redux
+
 ReactDOM.render(
-    <con.Provider value={color}>
-        <ParentPortal/>
-    </con.Provider>,
+    <App/>,
     document.getElementById('root'));
+// ReactDOM.render(
+//     <con.Provider value={color}>
+//         <ParentPortal/>
+//     </con.Provider>,
+//     document.getElementById('root'));
 
 
 
