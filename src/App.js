@@ -7,12 +7,14 @@ import Request from './Request';
 import Parent from './Context/Parent';
 import Hoc from './Hoc/Hoc';
 import Sider from './Sider';
+import { Button } from 'antd';
 export default class App extends Component {
     render() {
         return (
             <Router>
                 <div>
                     <Sider/>
+                    <Button type="primary">Primary</Button>
                     <div style={{marginLeft: 50,float: 'left',border: '2px solid red'}}>
                         <Route exact path='/' component={Todolist} />
                         <Route path='/hoc' component={Hoc} />
