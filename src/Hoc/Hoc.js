@@ -29,7 +29,12 @@ function hoc(Com,url,title){
             )
         }
     }
+    // A.displayName = 'A('+getDisplayName(Com)+')';
+    A.displayName = `A(${getDisplayName(Com)})`;
     return A;
+}
+function getDisplayName(Com){
+    return Com.displayName || Com.name || 'Component';
 }
 class Music extends Component{
     render(){
