@@ -8,6 +8,10 @@ import Parent from './Context/Parent';
 import Hoc from './Hoc/Hoc';
 import Sider from './Sider';
 import { Button } from 'antd';
+// antd使用：
+// 1、下载安装antd框架 ：npm i antd 
+// 2、在某个css里引入antd的css：@import '~antd/dist/antd.css';
+// 3、在需要的组件内import相应的组件，然后使用
 export default class App extends Component {
     render() {
         return (
