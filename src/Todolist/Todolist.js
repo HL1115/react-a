@@ -35,8 +35,9 @@ export default class Todolist extends Component {
         // console.log(this.state.todo)
         this.setState({
             todo: [...this.state.todo,msg]
+        },()=>{
+            localStorage.setItem()
         })
-        console.log(msg);
     }
     delItem = (a)=>{
         // this.state.todo.splice(a,1); //不要写
@@ -49,6 +50,7 @@ export default class Todolist extends Component {
         this.setState(
             {todo:todo}
         )
+
     }
     render() {
         return (
