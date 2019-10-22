@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {HashRouter as Router,Route,Switch} from 'react-router-dom';
+import {HashRouter as Router,Route,Switch,Redirect} from 'react-router-dom';
 
 import ShowTime from './ShowTime';
 import Todolist from './Todolist/Todolist'
@@ -30,7 +30,8 @@ export default class App extends Component {
                             <Route exact path='/' render={()=><Todolist/>}/>
                             <Route path='/hoc' component={Hoc} />
                             <Route path='/request' component={Request}/>
-                            <Route path='/userinfor' component={UserInfor}/>
+                            <Route path='/userinfor/:id' component={UserInfor}/>
+                            <Redirect from='/old' to='hoc'/>
                             <Route path='*' component={NoMatch}/>
                         </Switch>
                     </div>
