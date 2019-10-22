@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {BrowserRouter as Router,Route,Link} from 'react-router-dom';
+import {HashRouter as Router,Route,Switch} from 'react-router-dom';
 
 import ShowTime from './ShowTime';
 import Todolist from './Todolist/Todolist'
@@ -8,21 +8,31 @@ import Parent from './Context/Parent';
 import Hoc from './Hoc/Hoc';
 import Sider from './Sider';
 import { Button } from 'antd';
+import NoMatch from './NoMatch';
+import UserInfor from './Router/UserInfor';
 // antd使用：
 // 1、下载安装antd框架 ：npm i antd 
 // 2、在某个css里引入antd的css：@import '~antd/dist/antd.css';
 // 3、在需要的组件内import相应的组件，然后使用
 export default class App extends Component {
     render() {
+        // 所有路由的组件都得放在 BrowserRouter 里
+        // BrowserRouter里只能有一个子元素
         return (
-            <Router>
+            <Router basename='todolist'>
                 <div>
+                    {/* <UserInfor /> */}
+                    {/* <UserInfor /> */}
                     <Sider/>
-                    <Button type="primary">Primary</Button>
+                    {/* <Button type="primary">Primary</Button> */}
                     <div style={{marginLeft: 50,float: 'left',border: '2px solid red'}}>
-                        <Route exact path='/' component={Todolist} />
-                        <Route path='/hoc' component={Hoc} />
-                        <Route path='/request' component={Request}/>
+                        <Switch>
+                            <Route exact path='/' render={()=><Todolist/>}/>
+                            <Route path='/hoc' component={Hoc} />
+                            <Route path='/request' component={Request}/>
+                            <Route path='/userinfor' component={UserInfor}/>
+                            <Route path='*' component={NoMatch}/>
+                        </Switch>
                     </div>
                 </div>
             </Router>
