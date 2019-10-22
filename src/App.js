@@ -10,6 +10,7 @@ import Sider from './Sider';
 import { Button } from 'antd';
 import NoMatch from './NoMatch';
 import UserInfor from './Router/UserInfor';
+import Topic from './Router/Topic';
 // antd使用：
 // 1、下载安装antd框架 ：npm i antd 
 // 2、在某个css里引入antd的css：@import '~antd/dist/antd.css';
@@ -31,6 +32,7 @@ export default class App extends Component {
                             <Route path='/hoc' component={Hoc} />
                             <Route path='/request' component={Request}/>
                             <Route path='/userinfor/:id' component={UserInfor}/>
+                            <Route path='/Topic/:page' component={Topic}/>
                             <Redirect from='/old' to='hoc'/>
                             <Route path='*' component={NoMatch}/>
                         </Switch>

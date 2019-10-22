@@ -11,7 +11,7 @@ export default class Sider extends Component {
                 <li><Link to={'/userinfor/2'}>userinfor2</Link></li>   
                 {
                     [1,2,3,4,5,6].map((item)=>(
-                        <li><Link to={'/userinfor/'+item}>page{item}</Link></li>   
+                        <li key={item}><Link to={'/topic/'+item}>topic{item}</Link></li>   
                     ))
                 }
 
