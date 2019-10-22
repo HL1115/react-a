@@ -7,7 +7,7 @@ export default function UserInfor(props){
     }
     return (
         <div>
-            <p>name:zhangsan</p>
+            <p></p>
             <p>id:{props.match.params.id}</p>
             <button onClick={goTodo}>跳转到todolist</button>
         </div>

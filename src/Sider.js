@@ -9,6 +9,12 @@ export default class Sider extends Component {
                 <li><NavLink activeStyle={{background:'red',color:'#fff',fontSize:30}}  to='/request'>Request</NavLink></li>   
                 <li><Link to={'/userinfor/1'}>userinfor1</Link></li>   
                 <li><Link to={'/userinfor/2'}>userinfor2</Link></li>   
+                {
+                    [1,2,3,4,5,6].map((item)=>(
+                        <li><Link to={'/userinfor/'+item}>page{item}</Link></li>   
+                    ))
+                }
+
             </ul>
         )
     }
