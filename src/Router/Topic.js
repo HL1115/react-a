@@ -15,9 +15,9 @@ export default class Topic extends Component {
             this.setState({data:res.data});
         })
     }
-    shouldComponentUpdate(){
+    // shouldComponentUpdate(){
         
-    }
+    // }
     componentDidUpdate(){
         let page = this.props.match.params.page;
         fetch('https://cnodejs.org/api/v1/topics?page='+page)
