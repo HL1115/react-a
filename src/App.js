@@ -17,6 +17,13 @@ import Hooks from './Router/Hooks';
 // 2、在某个css里引入antd的css：@import '~antd/dist/antd.css';
 // 3、在需要的组件内import相应的组件，然后使用
 
+
+// 容器组件 / UI组件（展示组件）
+// 智能组件 / 木偶组件
+
+// 容器组件（pages/container）：写逻辑
+// UI组件（components）： 展示，写函数组件，直接return react元素
+
 function Login(props){
     console.log(props)
     return <button>登录</button>
