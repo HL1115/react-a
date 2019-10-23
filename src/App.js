@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {HashRouter as Router,Route,Switch,Redirect} from 'react-router-dom';
+import {HashRouter as Router,Route,Switch,Redirect,withRouter} from 'react-router-dom';
 
 import ShowTime from './ShowTime';
 import Todolist from './Todolist/Todolist'
@@ -16,6 +16,13 @@ import Hooks from './Router/Hooks';
 // 1、下载安装antd框架 ：npm i antd 
 // 2、在某个css里引入antd的css：@import '~antd/dist/antd.css';
 // 3、在需要的组件内import相应的组件，然后使用
+
+function Login(props){
+    console.log(props)
+    return <button>登录</button>
+}
+let LoginWithRouter = withRouter(Login);
+
 export default class App extends Component {
     render() {
         // 所有路由的组件都得放在 BrowserRouter 里
@@ -25,6 +32,8 @@ export default class App extends Component {
                 <div>
                     {/* <UserInfor /> */}
                     {/* <UserInfor /> */}
+                    <LoginWithRouter/>
+                    <Hooks />
                     <Sider/>
                     {/* <Button type="primary">Primary</Button> */}
                     <div style={{marginLeft: 50,float: 'left',border: '2px solid red'}}>
@@ -34,7 +43,7 @@ export default class App extends Component {
                             <Route path='/request' component={Request}/>
                             <Route path='/userinfor/:id' component={UserInfor}/>
                             <Route path='/Topic/:page' component={Topic}/>
-                            <Route path='/hooks/:id' component={Hooks}/>
+                            {/* <Route path='/hooks/:id' component={Hooks}/> */}
                             <Redirect from='/old' to='hoc'/>
                             <Route path='*' component={NoMatch}/>
                         </Switch>
@@ -44,3 +53,6 @@ export default class App extends Component {
         )
     }
 }
+
+
+
