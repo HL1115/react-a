@@ -6,7 +6,39 @@
 ul,li{
     list-style: none;
 }
+body{
+    background-color: #ddd;
+}
 /* header */
-
-
+.headerwrap{
+    height: 50px;
+    background-color: #444;
+}
+.headerwrap header{
+    width: 1200px;
+    margin: 0 auto;
+}
+.headerwrap img{
+    margin-top: 10px;
+    width: 120px;
+}
+.headerwrap a{
+    margin: 0 20px;
+    color: #fff;
+}
 /* main */
+.main{
+    width: 1200px;
+    margin: 30px auto;
+}
+.content{
+    width: 900px;
+    float: left;
+    border: 2px solid red;
+}
+.sider{
+    width: 270px;
+    height: 500px;
+    float: right;
+    background-color: green;
+}
