@@ -1,24 +1,26 @@
 import React,{useState, useEffect} from 'react';
 import ReactDOM from 'react-dom';
+import {BrowserRouter as Router,Route,Link} from 'react-router-dom';
+
 
 // 声明组件（有状态组件、无状态组件）
 // 1、类组件（state是类组件特有的、私有的、存储当前组件的数据）
 // 2、函数组件（无状态组件、小、简单、之前适合做UI组件）
 // hooks(只能用在函数组件，而且用组件最顶层)
 // useState
-// function Count(){
-//     let [num,setNum] = useState(0);
-//     let [name] = useState('tom');
+function Count(){
+    let [num,setNum] = useState(0);
+    let [name] = useState('tom');
 
-//     return (
-//         <div>
-//             <p>{num}</p>
-//             <p>{name}</p>
-//             <button onClick={()=>setNum(num+1)}>点击+1</button>
-//             {/* <button onClick={()=>this.add()}>点击+1</button> */}
-//         </div>
-//     )
-// }
+    return (
+        <div>
+            <p>{num}</p>
+            <p>{name}</p>
+            <button onClick={()=>setNum(num+1)}>点击+1</button>
+            {/* <button onClick={()=>this.add()}>点击+1</button> */}
+        </div>
+    )
+}
 // useEffect(代替类组件的生命周期函数)
 function ShowTime(){
     let [time,setTime] = useState(new Date().toLocaleString());
@@ -39,7 +41,14 @@ function ShowTime(){
 }
 
 ReactDOM.render(
-    <ShowTime />,
+    <Router>
+        <div>
+            <Link to='/count'>Count</Link><br/>
+            <Link to='/showtime'>ShowTime</Link>
+            <Route path='/count' component={Count}/>
+            <Route path='/showtime' component={ShowTime}/>
+        </div>
+    </Router>,
     document.getElementById('root')
 )
 
