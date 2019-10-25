@@ -1,7 +1,9 @@
-import React,{useState, useEffect} from 'react';
+import React,{useRef,useState, useEffect, useContext} from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter as Router,Route,Link} from 'react-router-dom';
+import Item from 'antd/lib/list/Item';
 
+let cxt = React.createContext();
 
 // 声明组件（有状态组件、无状态组件）
 // 1、类组件（state是类组件特有的、私有的、存储当前组件的数据）
@@ -11,10 +13,15 @@ import {BrowserRouter as Router,Route,Link} from 'react-router-dom';
 function Count(){
     let [num,setNum] = useState(0);
     let [name] = useState('tom');
-
+    let value = useContext(cxt);
+    console.log(value);
+    let p = useRef(null);
+    useEffect(()=>{
+        console.log(p);
+    })
     return (
         <div>
-            <p>{num}</p>
+            <p ref={p}>{num}</p>
             <p>{name}</p>
             <button onClick={()=>setNum(num+1)}>点击+1</button>
             {/* <button onClick={()=>this.add()}>点击+1</button> */}
@@ -27,28 +34,61 @@ function ShowTime(){
     // 相当于componentDidMount和componentDidUpdate
     // 相当于componentWillUnmount
     useEffect(()=>{
-        console.log(time)
         let timeId = setInterval(()=>{
+            console.log(time)
             setTime(new Date().toLocaleString())
         },1000)
         return ()=>{
             clearInterval(timeId)
         }
     },[])
+// 可以写多个useEffect
+    useEffect(()=>{
+
+    },[]);
+
     return <div>
         <h1>{time}</h1>
     </div>
 }
 
-ReactDOM.render(
-    <Router>
+// 自定义hook（更方便封装组件内的逻辑功能）
+// 函数名一定是use开头
+function useFetch(url){
+    let [data,setData] = useState([]);
+    useEffect(()=>{
+        fetch(url)
+            .then(res=>res.json())
+            .then(res=>{
+                setData(res.data)
+            })
+    })
+    return data;
+}
+
+function Topic(){
+    let data = useFetch('https://cnodejs.org/api/v1/topics');
+    return (
         <div>
-            <Link to='/count'>Count</Link><br/>
-            <Link to='/showtime'>ShowTime</Link>
-            <Route path='/count' component={Count}/>
-            <Route path='/showtime' component={ShowTime}/>
+            {
+                data.map((item)=><p key={item.id}>{item.title}</p>)
+            }
         </div>
-    </Router>,
+    )
+}
+
+ReactDOM.render(
+    <cxt.Provider value={{list:[1,2,3]}}>
+        <Router>
+            <div>
+                <Topic/>
+                <Link to='/count'>Count</Link><br/>
+                <Link to='/showtime'>ShowTime</Link>
+                <Route path='/count' component={Count}/>
+                <Route path='/showtime' component={ShowTime}/>
+            </div>
+        </Router>
+    </cxt.Provider>,
     document.getElementById('root')
 )
 
