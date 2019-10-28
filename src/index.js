@@ -62,7 +62,7 @@ function useFetch(url){
             .then(res=>{
                 setData(res.data)
             })
-    })
+    },[])
     return data;
 }
 
