@@ -9,9 +9,9 @@ export default class Route extends Component {
                     (value)=>{
             
                         let {pathname} = value.location
-                        let {path,component:Component} = this.props;
-                        
-                        if(pathname===path){
+                        let {path,component:Component,exact} = this.props;
+                        let reg = pathToReg(path,[],{end:exact})
+                        if(reg.test(pathname)){
                             return <Component {...value}/>
                             {/* return React.createElement(component,value) */}
                         }

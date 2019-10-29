@@ -15,7 +15,8 @@ ReactDOM.render(
                 {/* <a href='#/about'>about</a> */}
             </div>
             <div>
-                <Route path='/home' component={Home}/>
+                <Route exact path='/home' component={Home}/>
+                <Route path='/home/123' component={Home}/>
                 <Route path='/about' component={About}/>
             </div>
         </div>
