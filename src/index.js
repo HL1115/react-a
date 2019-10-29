@@ -4,9 +4,6 @@ import {HashRouter as Router,Route,Link} from './react-router-dom';
 import Home from './containers/Home';
 import About from './containers/About';
 
-window.onhashchange = function(){
-    console.log(window.location.hash)
-}
 
 ReactDOM.render(
     <Router>
