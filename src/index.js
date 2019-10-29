@@ -18,6 +18,7 @@ ReactDOM.render(
                 <Route exact path='/home' component={Home}/>
                 <Route path='/home/123' component={Home}/>
                 <Route path='/about' component={About}/>
+                {/* <Redirect to='/home'/> */}
             </div>
         </div>
     </Router>,
