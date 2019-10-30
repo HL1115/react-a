@@ -5,15 +5,19 @@ export default class Todoing extends Component {
     constructor(){
         super();
         this.state = {
-            todos: store.getState()
+            todos: store.getState().todo
         }
+        console.log(store.getState())
     }
     componentDidMount() {
-        store.subscribe(()=>{
+        this.subid = store.subscribe(()=>{
             this.setState({
-                todos: store.getState()
+                todos: store.getState().todo
             })
         })
+    }
+    componentWillUnmount(){
+        this.subid();
     }
     render() {
         return (
