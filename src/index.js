@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {HashRouter as Router,Route,Link} from './react-router-dom';
+import {HashRouter as Router,Route,Link,Redirect} from './react-router-dom';
 import Home from './containers/Home';
 import About from './containers/About';
-
+import NoMatch from './containers/NoMatch'
 
 ReactDOM.render(
     <Router>
@@ -18,7 +18,8 @@ ReactDOM.render(
                 <Route exact path='/home' component={Home}/>
                 <Route path='/home/123' component={Home}/>
                 <Route path='/about' component={About}/>
-                {/* <Redirect to='/home'/> */}
+                <Route path='/nomatch' component={NoMatch}/>
+                <Redirect to='/nomatch'/>
             </div>
         </div>
     </Router>,

@@ -32,8 +32,16 @@ export default class HashRouter extends Component {
         // }
     }
     render() {
+        let value = {
+            location: this.state.location,
+            history:{
+                push:(path)=>{
+                    window.location.hash = path;
+                }
+            }
+        }
         return (
-            <Provider value={this.state}>
+            <Provider value={value}>
                 {
                     this.props.children
                 }
