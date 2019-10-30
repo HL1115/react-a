@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import Todoinput from './Todoinput'
+import Todoing from './Todoing'
 
 export default class Home extends Component {
 
@@ -6,7 +8,8 @@ export default class Home extends Component {
         console.log(this.props)
         return (
             <div>
-                Home
+                <Todoinput/>
+                <Todoing/>
             </div>
         )
     }
