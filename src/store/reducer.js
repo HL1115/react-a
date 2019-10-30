@@ -4,6 +4,7 @@ let todos = [
 function todo(state=todos,action){
     switch (action.type) {
         case 'add_item':
+            console.log(action)
             return [...state,action.value];
         default:
             return state;

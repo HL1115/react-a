@@ -1,10 +1,16 @@
 import React, { Component } from 'react'
+import store from '../store';
 
 export default class Todoinput extends Component {
+    add = (e)=>{
+        if(e.keyCode === 13){
+            store.dispatch({type:'add_item',value:e.target.value})
+        }
+    }
     render() {
         return (
             <div>
-                <input type="text"/>
+                <input onKeyDown={this.add} type="text"/>
             </div>
         )
     }
