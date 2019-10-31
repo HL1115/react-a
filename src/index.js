@@ -4,24 +4,28 @@ import {HashRouter as Router,Route,Link,Switch,Redirect} from './react-router-do
 import Home from './containers/Home';
 import About from './containers/About';
 import NoMatch from './containers/NoMatch'
+import store from './store';
+import {Provider} from 'react-redux';
 
 ReactDOM.render(
-    <Router>
-        <div>
+    <Provider store={store}>
+        <Router>
             <div>
-                <Link to='/home'>首页</Link>
-                <Link to='/about'>about</Link>
+                <div>
+                    <Link to='/home'>首页</Link>
+                    <Link to='/about'>about</Link>
+                </div>
+                <div>
+                    <Switch>
+                        <Route exact path='/home' component={Home}/>
+                        <Route path='/home/123' component={Home}/>
+                        <Route path='/about' component={About}/>
+                        <Route path='/nomatch' component={NoMatch}/>
+                        <Redirect to='/nomatch'/>
+                    </Switch>
+                </div>
             </div>
-            <div>
-                <Switch>
-                    <Route exact path='/home' component={Home}/>
-                    <Route path='/home/123' component={Home}/>
-                    <Route path='/about' component={About}/>
-                    <Route path='/nomatch' component={NoMatch}/>
-                    <Redirect to='/nomatch'/>
-                </Switch>
-            </div>
-        </div>
-    </Router>,
+        </Router>
+    </Provider>,
     document.getElementById('root')
 )
