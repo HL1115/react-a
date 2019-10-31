@@ -15,6 +15,7 @@ let inputValue = 'hello';
 function inputchange(state=inputValue,action){
     switch (action.type) {
         case 'change_value':
+            console.log(action)
             return action.value;
     
         default:
