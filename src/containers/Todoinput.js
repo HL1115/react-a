@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import store from '../store';
-
+import {addItem,changevalue} from '../actions/actionCreators';
 export default class Todoinput extends Component {
     constructor(){
         super();
@@ -10,14 +10,11 @@ export default class Todoinput extends Component {
     }
     add = (e)=>{
         if(e.keyCode === 13){
-            store.dispatch({type:'add_item',value:e.target.value})
+            store.dispatch(addItem(e.target.value))
         }
     }
     handleChange = (e)=>{
-        store.dispatch({
-            type: 'change_value',
-            value: e.target.value
-        })
+        store.dispatch(changevalue(e.target.value))
     }
     componentDidMount() {
         store.subscribe(()=>{

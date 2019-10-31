@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import store from '../store';
-
+import {delItem} from '../actions/actionCreators';
 export default class Todoing extends Component {
     constructor(){
         super();
@@ -19,10 +19,7 @@ export default class Todoing extends Component {
         this.subid();
     }
     delItem = (index)=>{
-        store.dispatch({
-            type:'del_item',
-            index: index
-        })
+        store.dispatch(delItem(index))
     }
     render() {
         return (

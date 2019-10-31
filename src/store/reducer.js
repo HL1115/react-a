@@ -1,13 +1,13 @@
 import {combineReducers} from 'redux';
+import {ADD_ITEM,DEL_ITEM,CHANGE_VALUE} from '../actions/actionTypes'; 
 let todos = [
     1,2,3
 ]
 function todo(state=todos,action){
     switch (action.type) {
-        case 'add_item':
+        case ADD_ITEM:
             return [...state,action.value];
-            
-        case 'del_item':
+        case DEL_ITEM:
             return state.filter((item,idx)=>{
                 return action.index!==idx
             })
@@ -22,7 +22,7 @@ function todo(state=todos,action){
 let inputValue = 'hello';
 function inputchange(state=inputValue,action){
     switch (action.type) {
-        case 'change_value':
+        case CHANGE_VALUE:
             console.log(action)
             return action.value;
     
