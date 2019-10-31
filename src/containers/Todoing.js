@@ -7,7 +7,6 @@ export default class Todoing extends Component {
         this.state = {
             todos: store.getState().todo
         }
-        console.log(store.getState())
     }
     componentDidMount() {
         this.subid = store.subscribe(()=>{
@@ -19,12 +18,18 @@ export default class Todoing extends Component {
     componentWillUnmount(){
         this.subid();
     }
+    delItem = (index)=>{
+        store.dispatch({
+            type:'del_item',
+            index: index
+        })
+    }
     render() {
         return (
             <ul>
                 {
-                    this.state.todos.map((item)=>(
-                        <li key={item}>{item}</li>
+                    this.state.todos.map((item,idx)=>(
+                        <li key={item}>{item}---<button onClick={()=>this.delItem(idx)}>删除</button></li>
                     ))
                 } 
             </ul>
