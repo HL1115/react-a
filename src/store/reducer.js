@@ -34,9 +34,11 @@ let userInfor = {
     avatar_url:'',
     loginname:''
 }
+// redux三大原则
 function getUserInfor(state=userInfor,action){
     switch (action.type) {
         case 'get_user_infor':
+            
             console.log(action)
             return action.userInfor;
     

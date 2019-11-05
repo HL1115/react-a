@@ -18,5 +18,7 @@ import todo from './reducer';
 
 // react-redux（Provider，connect）
 
+// redux-thunk(中间件)
+
 let store = createStore(todo);
 export default store;
