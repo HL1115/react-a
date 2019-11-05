@@ -30,6 +30,7 @@ function inputchange(state=inputValue,action){
             return state;
     }
 }
+
 export default combineReducers({
     todo,inputchange
 });
