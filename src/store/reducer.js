@@ -30,7 +30,21 @@ function inputchange(state=inputValue,action){
             return state;
     }
 }
+let userInfor = {
+    avatar_url:'',
+    loginname:''
+}
+function getUserInfor(state=userInfor,action){
+    switch (action.type) {
+        case 'get_user_infor':
+            console.log(action)
+            return action.userInfor;
+    
+        default:
+            return state;
+    }
+}
 
 export default combineReducers({
-    todo,inputchange
+    todo,inputchange,getUserInfor
 });
