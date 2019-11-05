@@ -1,6 +1,12 @@
-import {createStore} from 'redux';
+import {createStore,applyMiddleware,compose} from 'redux';
 import todo from './reducer';
-
+import thunk from 'redux-thunk';
+let store = createStore(
+    todo,
+    compose(applyMiddleware(thunk),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+);
+export default store;
 // redux（action、Reducer、store）：可预测的状态管理的容器
 // 组件嵌套层级比较多、跨组件交互较多、setState
 // redux的状态存在一个唯一的store，
@@ -20,5 +26,4 @@ import todo from './reducer';
 
 // redux-thunk(中间件)
 
-let store = createStore(todo);
-export default store;
+

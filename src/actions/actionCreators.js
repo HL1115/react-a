@@ -17,3 +17,17 @@ export const getUserInfor = (userInfor)=>({
     type: types.GET_USERINFOR,
     userInfor
 })
+export const getUserInforWithFetch = (userInfor)=>{
+
+    return (dispatch)=>{
+        fetch('https://cnodejs.org/api/v1/user/alsotang')
+            .then(res=>res.json())
+            .then(res=>{
+                dispatch(getUserInfor({
+                    avatar_url:res.data.avatar_url,
+                    loginname:res.data.loginname
+                }))
+                // props.history.push('/home')
+            })
+    }
+}

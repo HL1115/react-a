@@ -1,28 +1,16 @@
 import React from 'react';
+import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {getUserInfor} from '../actions/actionCreators';
-// whatwg-fetch
-function Login(props){
-    function login(){
+import {getUserInforWithFetch} from '../actions/actionCreators';
+import Button from './Button';
 
-        fetch('https://cnodejs.org/api/v1/user/alsotang')
-            .then(res=>res.json())
-            .then(res=>{
-                // console.log(res);
-                // props.dispatch({
-                //     type:'get_user_infor',
-                //     userInfor:{
-                //         avatar_url:res.data.avatar_url,
-                //         loginname:res.data.loginname
-                //     }
-                // })
-                props.dispatch(getUserInfor({
-                    avatar_url:res.data.avatar_url,
-                    loginname:res.data.loginname
-                }))
-                props.history.push('/home')
-            })
-    }
+function Login(props){
+    // let disLogin = bindActionCreators(getUserInforWithFetch,props.dispatch)
+    
+    // function login(){
+        // disLogin();
+        // props.dispatch(getUserInforWithFetch());
+    // }
     return (
         <div>
             <p>
@@ -32,9 +20,22 @@ function Login(props){
                 <input type="password"/>
             </p>
             <p>
-                <button onClick={login}>登录</button>
+                <Button login={props.disLogin}/>
             </p>
         </div>
     )
 }
-export default connect()(Login);
+let mapStateToProps = (state)=>{};
+let mapDispatchToProps = (dispatch)=>{
+    return {
+        disLogin:bindActionCreators(
+            getUserInforWithFetch,
+            dispatch
+        )
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Login);
