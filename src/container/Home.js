@@ -31,10 +31,9 @@ export default class Home extends Component {
     getData = (tab,page=1)=>{
         this.tab = tab;
         let url = 'https://cnodejs.org/api/v1/topics?tab='+tab+'&page='+page
-        fetch(url).
-            then(res=>res.json())
+        fetch(url)
+            .then(res=>res.json())
             .then(res=>{
-                console.log(res);
                 this.setState({
                     data:res.data
                 })
